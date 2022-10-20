@@ -57,6 +57,7 @@ TREADS = {}
 treads_flag = 0
 
 
+
 # Create dict trans with help of zip()
 for c, l in zip(CYRILLIC_SYMBOLS, TRANSLATION):
     TRANS[ord(c)] = l
@@ -94,10 +95,10 @@ def search_function (path, k_space):
     k_space += 1
     space = " " * 3 * k_space
     global treads_flag
+
     
     if len(os.listdir(path)) == 0: # base case
-        # Delete empty folders
-        #Path.rmdir(path)
+
         return
     else:
         for i in path.iterdir():
@@ -109,23 +110,31 @@ def search_function (path, k_space):
             if i.is_dir() and i != 'images' and i != 'documents' and i != 'audio' and i != 'video' and i != 'archives' :
                 ### All our activities with folders
 
+                print(f'Path: {path}')
                 path = Path.joinpath(path, i)
+                path_num =len(str(path).split('\\'))
+                
+
+                if path_num == path_num_init+1:
+                    treads_flag += 1
+                    TREADS[treads_flag] = MyThread(path, k_space, treads_flag)
+                    TREADS[treads_flag].start()
+                    print(f'Tread #{treads_flag} started')
+                    print(f'Folder Name: {i}')
+                    TREADS[treads_flag].join()
 
 
-                # Recurcive case
-                treads_flag += 1
-                TREADS[treads_flag] = MyThread(path, k_space, treads_flag)
-                TREADS[treads_flag].start()
-                print(f'Tread #{treads_flag} started')
-                print(f'Folder Name: {i}')
+                else:
 
+                    # Recurcive case
+                    search_function(path, k_space)  # recursive case
 
 
                 #search_function (path, k_space) # recursive case
                 
                 # Delete empty folders or rename it
                 if len(os.listdir(i)) == 0:
-                    TREADS[treads_flag].join()
+
                     Path.rmdir(i)
                 
                 else:
@@ -136,6 +145,7 @@ def search_function (path, k_space):
                 ### All our activities with files + archives
                 #rename_files ----> path = i
                 i = rename_func (i)
+
                                                
                 ### Files GRID
                 
@@ -346,6 +356,8 @@ with open('report.txt', 'w') as report:
     if __name__ == '__main__':
         if sys.argv[1]:
             p = Path(sys.argv[1])
+            path_num_init = (len(str(p).split('\\')))
+
             print(f'Target folder is: {p}.')
     
             report.write('File structure processing:' + '\n\n')

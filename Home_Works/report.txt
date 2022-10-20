@@ -1,3 +1,23 @@
 File structure processing:
 
     123                                                                                                  Folder    
+    35676                                                                                                Folder    
+       ghjhgj                                                                                               Folder    
+          hjhkhjkh                                                                                             Folder    
+    Archive.zip                                                                                          File      
+    arrow-play-arrows-svgrepo-com.svg                                                                    File      
+    coatofarmsofsomalia.png                                                                              File      
+    graph-analytics-business-3-svgrepo-com.svg                                                           File      
+    money-sign-bank-4-svgrepo-com.svg                                                                    File      
+    pesnya-oj-u-luzi-chervona-kalina-pohililasya.mp3                                                     File      
+    qw.jpg                                                                                               File      
+    serhii                                                                                               Folder    
+       Alfa corespondence.docx                                                                              File      
+       Yulia                                                                                                Folder    
+          WG1_TORs 2016.pdf                                                                                    File      
+    viber_image_2022-09-10_07-50-10-621.jpg                                                              File      
+    viber_image_2022-09-10_07-50-10-820.jpg                                                              File      
+    viktor-pavlik-oj-u-luzi-chervona-kalina.mp3                                                          File      
+
+
+
